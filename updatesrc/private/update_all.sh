@@ -61,7 +61,7 @@ def format(target):
 EOF
 bazel_query="kind(updatesrc_update, //...)"
 update_targets=()
-while IFS=$'\n' read -r line; do update_targets+=("$line"); done < <(
+read -ra update_targets < <(
   bazel cquery "${bazel_query}" \
     --output=starlark \
     --starlark:file="${starlark_file}" \
